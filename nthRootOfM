@@ -1,0 +1,41 @@
+// questionLink="https://practice.geeksforgeeks.org/problems/find-nth-root-of-m5843/1#"
+
+class Solution
+{
+    public int NthRoot(int n, int m)
+    {
+        // code here
+        
+       int ans= bs(n,m);
+       return ans;
+       
+    }
+ 
+    public static int bs(int n,int m){
+         int h=m/n;
+        int l=1;
+     
+        while(h-l>1){
+             int mid=(l+h)/2;
+            
+           if(Math.pow(mid,n)<m){
+                l=mid+1;
+            }
+            else{
+                h=mid;
+            }
+        
+            
+          
+        }
+        if(Math.pow(l,n)==m){
+            return l;
+        }
+        else if(Math.pow(h,n)==m){
+            return h;
+        }
+        else{
+            return -1;
+        }
+    }
+}
