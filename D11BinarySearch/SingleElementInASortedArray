@@ -1,0 +1,38 @@
+class Solution {
+//  LinkOfTheProblem =https://leetcode.com/problems/single-element-in-a-sorted-array/
+   
+   public int singleNonDuplicate(int[] nums) {
+        int l=0;
+        int h=nums.length-1;
+        while(l<h){
+            int mid=(l+h)/2;
+            if(mid%2==0){
+                if(nums[mid+1]==nums[mid]){
+                   l=mid+1 ;
+                }
+                else{
+                    h=mid;
+                }
+            }
+            else{
+                if(nums[mid-1]==nums[mid]){
+                   l=mid+1 ;
+                }
+                else{
+                    h=mid;
+                }
+            }
+        }
+        return nums[l];
+    }
+}
+
+
+//O(n) approach using bit manipulation
+ // public int singleNonDuplicate(int[] nums) {
+ //        int x=0;
+ //        for(int v:nums){
+ //            x=x^v;
+ //        }
+ //        return x;
+ //    }
