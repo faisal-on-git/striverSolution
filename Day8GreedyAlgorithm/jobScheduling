@@ -1,0 +1,50 @@
+//LinkOfTheProblem=https://practice.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1#"
+
+
+
+class Solution
+{
+    //Function to find the maximum profit and the number of jobs done.
+    int[] JobScheduling(Job arr[], int n)
+    {
+        // Your code here
+      //  HashSet<Integer> hs=new HashSet<>();
+      int[] da=new int[101];
+      int [] ans=new int[2];
+        Arrays.sort(arr,(a,b)->{
+            return b.profit-a.profit;
+        });
+        int fp=0;
+        int nj=0;
+        for(int i=0;i<arr.length;i++){
+          
+          int d=arr[i].deadline;
+          int j=d;
+          while(j-->0){
+              if(da[j]==0){
+                  da[j]=1;
+                  break;
+              }
+          }
+          if(j>=0){
+            fp+=arr[i].profit;
+            nj++;
+          }
+            
+        }
+        ans[0]=nj;
+        ans[1]=fp;
+        return ans;
+    }
+}
+
+/*
+class Job {
+    int id, profit, deadline;
+    Job(int x, int y, int z){
+        this.id = x;
+        this.deadline = y;
+        this.profit = z; 
+    }
+}
+*/
