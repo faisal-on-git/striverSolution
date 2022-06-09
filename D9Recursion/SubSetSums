@@ -1,0 +1,29 @@
+//link=https://practice.geeksforgeeks.org/problems/subset-sums
+
+
+
+class Solution{
+    ArrayList<Integer> ans =new ArrayList<>();
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
+        helper(arr,0,0);
+        return ans;
+        
+        
+         
+    }
+    
+ public void helper(ArrayList<Integer> arr,int idx,int sum){
+     if(idx==arr.size()){
+         ans.add(sum);
+         return ;
+     }
+      helper(arr,idx+1,sum+0);// not including current element 
+     helper(arr,idx+1,sum+arr.get(idx));// including current element;
+     
+    
+     
+     
+ }
+    
+}
