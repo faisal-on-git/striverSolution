@@ -1,0 +1,66 @@
+//link=https://leetcode.com/problems/intersection-of-two-linked-lists/
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+       int la=0;
+        int lb=0;
+        ListNode ta=headA;
+        ListNode tb=headB;
+        
+        while(headA!=null){
+            
+            headA=headA.next;
+            la++;
+            
+        }
+        
+        while(headB!=null){
+            
+                headB=headB.next;
+            lb++;
+            }
+        int move=Math.abs(la-lb);
+        if(la>lb){
+            for(int i=0;i<move;i++){
+                ta=ta.next;
+            }
+        }
+        else{
+            for(int i=0;i<move;i++){
+                tb=tb.next;
+            }
+        }
+        while(ta!=tb){
+            ta=ta.next;
+            tb=tb.next;
+        }
+        
+        
+       return ta; 
+    }
+}
+
+
+
+
+
+
+
+
+//Alternate from discussion
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    //boundary check
+    if(headA == null || headB == null) return null;
+    
+    ListNode a = headA;
+    ListNode b = headB;
+    
+    //if a & b have different len, then we will stop the loop after second iteration
+    while( a != b){
+    	//for the end of first iteration, we just reset the pointer to the head of another linkedlist
+        a = a == null? headB : a.next;
+        b = b == null? headA : b.next;    
+    }
+    
+    return a;
+}
