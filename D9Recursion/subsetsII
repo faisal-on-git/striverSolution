@@ -1,0 +1,48 @@
+//link=https://leetcode.com/problems/subsets-ii/
+
+
+Brute-Force (My Logic)
+class Solution {
+    List<List<Integer>> ans=new ArrayList<>();
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        HashSet<String> hs=new HashSet<>();
+        helper(nums,0,hs,new ArrayList<Integer>());
+        
+        
+       // System.out.println(hs);
+        return ans;
+        
+        
+    }
+    
+    
+    public void helper(int [] nums,int i,HashSet<String> hs,List<Integer> ssf){
+        if(i==nums.length){
+            List<Integer> tl=new ArrayList<>(ssf);
+            Collections.sort(tl);
+            String temp=tl.toString();
+            System.out.println(temp);
+            if(!hs.contains(temp)){
+                hs.add(temp);
+   ans.add(new ArrayList<>(ssf));
+        }
+            
+           
+            
+            return;
+        }
+        ssf.add(nums[i]);
+           helper(nums,i+1,hs,ssf);
+        ssf.remove(ssf.size()-1);
+        
+        helper(nums,i+1,hs,ssf);
+        
+     
+    }
+    
+    
+    
+  //  optimiised(striversLogic)
+    see code in vdo time stamp  24 min
+    
+}
