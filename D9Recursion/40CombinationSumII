@@ -1,0 +1,44 @@
+//link=https://leetcode.com/problems/combination-sum-ii/
+
+
+
+class Solution {
+     List<List<Integer>> ans=new ArrayList<>();
+    
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        
+        Arrays.sort(candidates);
+       
+        helper(candidates,target,0,new ArrayList<>(),0);
+        return ans;
+    }
+    
+    
+    public void helper(int [] candidates,int target,int sum,List<Integer> ds,int start){
+        if(sum>target){
+            return;
+        }
+           else if(sum==target){
+                List<Integer> temp=new ArrayList<>(ds);
+              
+                
+                
+                    ans.add(temp);
+               
+            }
+            
+        
+        
+        
+        else{
+        for(int i=start;i<candidates.length;i++){
+            if(i>start && candidates[i]==candidates[i-1]) continue;
+            ds.add(candidates[i]);
+            helper(candidates,target,sum+candidates[i],ds,i+1);
+            ds.remove(ds.size()-1);
+           
+        }
+        }
+         
+    } 
+}
