@@ -1,0 +1,43 @@
+//link=https://leetcode.com/problems/combination-sum/
+
+class Solution {
+    List<List<Integer>> ans=new ArrayList<>();
+  //  HashSet<String> hs=new HashSet<>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        
+        helper(candidates,target,0,new ArrayList<>(),0);
+        return ans;
+        
+    }
+    
+    
+    public void helper(int [] candidates,int target,int sum,List<Integer> ds,int start){
+        if(sum>target){
+            return;
+        }
+           else if(sum==target){
+                List<Integer> temp=new ArrayList<>(ds);
+               // Collections.sort(temp);
+                
+                //if(!hs.contains(temp.toString())){
+                    //hs.add(temp.toString());
+                  //  System.out.println(temp);
+                    ans.add(temp);
+               // }
+            }
+            
+        
+        
+        
+        else{
+        for(int i=start;i<candidates.length;i++){
+            ds.add(candidates[i]);
+            helper(candidates,target,sum+candidates[i],ds,i);
+            ds.remove(ds.size()-1);
+           
+        }
+        }
+          //helper(candidates,target,sum,ds);
+    } 
+}
